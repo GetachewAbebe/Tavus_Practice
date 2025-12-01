@@ -19,30 +19,30 @@ apply_custom_css()
 render_sidebar()
 
 # Header
-st.markdown("# 📧 Contact Us")
-st.markdown("Get in touch with our team")
+st.markdown("# 📧 Get in Touch")
+st.markdown("We're here to help")
 st.markdown("---")
 
 # Contact Options
 col1, col2 = st.columns([2, 1])
 
 with col1:
-    st.markdown("## 💬 Send Us a Message")
+    st.markdown("## 💬 Send a Message")
     
     with st.form("contact_form"):
-        name = st.text_input("Name *", placeholder="Your full name")
+        name = st.text_input("Name *", placeholder="Your name")
         email = st.text_input("Email *", placeholder="your.email@example.com")
-        company = st.text_input("Company", placeholder="Your company name")
+        company = st.text_input("Company", placeholder="Your company (optional)")
         
         subject = st.selectbox(
-            "Subject *",
+            "What do you need help with? *",
             [
-                "General Inquiry",
-                "Technical Support",
+                "General Question",
+                "Technical Help",
                 "Sales Question",
-                "Partnership Opportunity",
+                "Partnership",
                 "Feature Request",
-                "Bug Report",
+                "Report a Problem",
                 "Other"
             ]
         )

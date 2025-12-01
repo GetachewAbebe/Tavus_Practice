@@ -25,8 +25,8 @@ render_sidebar()
 init_db()
 
 # Header
-st.markdown("# 📊 Analytics Dashboard")
-st.markdown("Real-time insights into your voice conversations and lead generation")
+st.markdown("# 📊 Your Stats")
+st.markdown("See how your conversations are performing")
 st.markdown("---")
 
 # Get data
@@ -42,13 +42,13 @@ conversion_rate = (leads_with_email / total_leads * 100) if total_leads > 0 else
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.markdown(create_metric_card("Total Conversations", str(total_leads), "💬"), unsafe_allow_html=True)
+    st.markdown(create_metric_card("Total Calls", str(total_leads), "💬"), unsafe_allow_html=True)
 
 with col2:
-    st.markdown(create_metric_card("Leads Captured", str(leads_with_email), "✉️"), unsafe_allow_html=True)
+    st.markdown(create_metric_card("Emails Collected", str(leads_with_email), "✉️"), unsafe_allow_html=True)
 
 with col3:
-    st.markdown(create_metric_card("Conversion Rate", f"{conversion_rate:.1f}%", "📈"), unsafe_allow_html=True)
+    st.markdown(create_metric_card("Success Rate", f"{conversion_rate:.1f}%", "📈"), unsafe_allow_html=True)
 
 with col4:
     st.markdown(create_metric_card("Names Collected", str(leads_with_name), "👤"), unsafe_allow_html=True)
@@ -56,34 +56,9 @@ with col4:
 st.markdown("---")
 
 # Recent Conversations
-st.markdown("## 📋 Recent Conversations")
+st.markdown("## 📋 Recent Calls")
 
 if leads:
-    # Create a table view
-    st.markdown("""
-    <style>
-        .lead-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .lead-table th {
-            background: #1E293B;
-            color: #F8FAFC;
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 2px solid #334155;
-        }
-        .lead-table td {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid #334155;
-            color: #CBD5E1;
-        }
-        .lead-table tr:hover {
-            background: #1E293B;
-        }
-    </style>
-    """, unsafe_allow_html=True)
-    
     # Display leads in a table
     for lead in leads[:10]:  # Show last 10
         col_id, col_name, col_email, col_time = st.columns([1, 2, 3, 2])
@@ -92,10 +67,10 @@ if leads:
             st.markdown(f"**#{lead['id']}**")
         
         with col_name:
-            st.markdown(f"👤 {lead['name'] or 'N/A'}")
+            st.markdown(f"👤 {lead['name'] or 'Not provided'}")
         
         with col_email:
-            st.markdown(f"✉️ {lead['email'] or 'N/A'}")
+            st.markdown(f"✉️ {lead['email'] or 'Not provided'}")
         
         with col_time:
             if lead['timestamp']:
@@ -110,38 +85,38 @@ if leads:
         st.markdown("---")
     
     if len(leads) > 10:
-        st.info(f"Showing 10 of {len(leads)} total conversations")
+        st.info(f"Showing 10 of {len(leads)} total calls")
 else:
-    st.info("No conversations yet. Start a conversation from the Home page to see analytics here.")
+    st.info("No calls yet. Start a conversation from the Home page to see stats here.")
 
 st.markdown("---")
 
 # Performance Insights
-st.markdown("## 💡 Performance Insights")
+st.markdown("## 💡 Quick Tips")
 
 col_insight1, col_insight2 = st.columns(2)
 
 with col_insight1:
     st.markdown("""
-    ### 🎯 Key Takeaways
-    - **Lead Quality**: Track how many conversations result in captured contact information
-    - **Engagement**: Monitor conversation completion rates
-    - **Optimization**: Identify patterns in successful conversations
+    ### 🎯 What to Track
+    - How many people share their email
+    - Which conversations work best
+    - When people call most often
     """)
 
 with col_insight2:
     st.markdown("""
-    ### 📈 Recommendations
-    - Aim for >50% email capture rate
-    - Optimize persona prompts based on conversation data
-    - A/B test different conversation flows
+    ### 📈 Goals to Aim For
+    - Get emails from 50%+ of calls
+    - Keep improving your AI's responses
+    - Test different conversation styles
     """)
 
 # Export functionality
 st.markdown("---")
-st.markdown("## 📥 Export Data")
+st.markdown("## 📥 Download Your Data")
 
-if st.button("📄 Export to CSV", type="secondary"):
+if st.button("📄 Download as Spreadsheet", type="secondary"):
     if leads:
         import csv
         from io import StringIO
@@ -152,10 +127,10 @@ if st.button("📄 Export to CSV", type="secondary"):
         writer.writerows(leads)
         
         st.download_button(
-            label="⬇️ Download CSV",
+            label="⬇️ Download Now",
             data=output.getvalue(),
-            file_name=f"voiceflow_leads_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+            file_name=f"voiceflow_calls_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
             mime="text/csv"
         )
     else:
-        st.warning("No data to export")
+        st.warning("No data to download yet")

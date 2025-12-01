@@ -19,218 +19,122 @@ apply_custom_css()
 render_sidebar()
 
 # Header
-st.markdown("# ⚡ Platform Features")
-st.markdown("Discover the powerful capabilities of VoiceFlow AI")
+st.markdown("# ⚡ What You Can Do")
+st.markdown("See what VoiceFlow AI can help you with")
 st.markdown("---")
 
 # Core Features
-st.markdown("## 🎯 Core Features")
+st.markdown("## 🎯 Main Features")
 
 col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("""
-    ### 🎙️ AI Voice Conversations
-    Natural, context-aware voice interactions powered by advanced AI
+    ### 🎙️ Voice Conversations
+    Talk with AI just like talking to a person
     
-    **Key Benefits:**
-    - Real-time voice synthesis
-    - Natural language understanding
-    - Context retention across conversations
-    - Multi-turn dialogue support
+    - Works in real-time
+    - Understands what you mean
+    - Remembers your conversation
+    - Handles back-and-forth naturally
     """)
     
     st.markdown("""
-    ### 📝 Knowledge Base Integration
-    Connect your documentation and knowledge sources
+    ### 📝 Your Knowledge Base
+    Connect your documents and information
     
-    **Key Benefits:**
-    - Document-based responses
-    - Automatic knowledge extraction
-    - Version control for knowledge bases
-    - Multi-document support
+    - Upload your files
+    - AI learns from them
+    - Gives accurate answers
+    - Update anytime
     """)
     
     st.markdown("""
-    ### 🔔 Webhook Notifications
-    Real-time alerts and integrations
+    ### 🔔 Get Notified
+    Know when something happens
     
-    **Key Benefits:**
-    - Instant conversation notifications
-    - Custom payload formatting
-    - Retry logic for reliability
-    - Multiple endpoint support
+    - Instant alerts
+    - Works with your tools
+    - Never miss a call
+    - Automatic updates
     """)
 
 with col2:
     st.markdown("""
-    ### 🎨 Custom Personas
-    Create branded AI personalities
+    ### 🎨 Make It Yours
+    Customize how AI talks
     
-    **Key Benefits:**
-    - Customizable system prompts
-    - Brand voice alignment
-    - Persona versioning
-    - A/B testing support
+    - Match your brand
+    - Set the tone
+    - Choose the style
+    - Test different approaches
     """)
     
     st.markdown("""
-    ### 📊 Analytics & Insights
-    Comprehensive conversation analytics
+    ### 📊 See Your Results
+    Track what's happening
     
-    **Key Benefits:**
-    - Real-time metrics
-    - Lead capture tracking
-    - Conversion analytics
-    - Export capabilities
+    - Live updates
+    - See who called
+    - Track success
+    - Download reports
     """)
     
     st.markdown("""
-    ### 🔒 Enterprise Security
-    Bank-grade security and compliance
+    ### 🔒 Safe & Secure
+    Your data is protected
     
-    **Key Benefits:**
-    - End-to-end encryption
-    - SOC 2 compliance
-    - GDPR ready
-    - Data residency options
-    """)
-
-st.markdown("---")
-
-# Advanced Capabilities
-st.markdown("## 🚀 Advanced Capabilities")
-
-tab1, tab2, tab3 = st.tabs(["🧠 AI Features", "🔗 Integrations", "📈 Scalability"])
-
-with tab1:
-    st.markdown("""
-    ### Intelligent AI Capabilities
-    
-    #### Context-Aware Processing
-    - Maintains conversation history
-    - Understands user intent
-    - Adapts responses based on context
-    
-    #### Natural Language Understanding
-    - Multi-language support
-    - Sentiment analysis
-    - Entity extraction (names, emails, etc.)
-    
-    #### Smart Routing
-    - Intent-based conversation flows
-    - Dynamic response generation
-    - Fallback handling
-    
-    #### Learning & Improvement
-    - Conversation analysis
-    - Performance optimization
-    - Continuous model updates
-    """)
-
-with tab2:
-    st.markdown("""
-    ### Seamless Integrations
-    
-    #### CRM Integration
-    - Salesforce
-    - HubSpot
-    - Pipedrive
-    - Custom CRM via API
-    
-    #### Communication Platforms
-    - Slack notifications
-    - Microsoft Teams
-    - Email automation
-    - SMS alerts
-    
-    #### Analytics Tools
-    - Google Analytics
-    - Mixpanel
-    - Segment
-    - Custom analytics
-    
-    #### Development Tools
-    - REST API
-    - Webhooks
-    - SDKs (Python, JavaScript)
-    - GraphQL support
-    """)
-
-with tab3:
-    st.markdown("""
-    ### Enterprise-Grade Scalability
-    
-    #### Performance
-    - 99.9% uptime SLA
-    - <100ms response latency
-    - Auto-scaling infrastructure
-    - Global CDN distribution
-    
-    #### Capacity
-    - Unlimited conversations
-    - Concurrent call handling
-    - High-volume support
-    - Burst traffic management
-    
-    #### Reliability
-    - Redundant systems
-    - Automatic failover
-    - Data backup & recovery
-    - 24/7 monitoring
-    
-    #### Support
-    - Dedicated account manager
-    - Priority support queue
-    - Custom SLA options
-    - Technical consultation
+    - Bank-level security
+    - Privacy compliant
+    - Data protection
+    - Secure storage
     """)
 
 st.markdown("---")
 
 # Use Cases
-st.markdown("## 💼 Use Cases")
+st.markdown("## 💼 How People Use It")
 
 use_case_col1, use_case_col2, use_case_col3 = st.columns(3)
 
 with use_case_col1:
     st.markdown("""
     ### 📞 Customer Support
-    - 24/7 availability
-    - Instant responses
-    - Escalation to humans
-    - Multi-language support
+    - Available 24/7
+    - Quick answers
+    - Can transfer to humans
+    - Works in many languages
     """)
 
 with use_case_col2:
     st.markdown("""
-    ### 🎯 Lead Generation
-    - Qualify prospects
-    - Capture contact info
-    - Schedule meetings
-    - CRM integration
+    ### 🎯 Collect Leads
+    - Find potential customers
+    - Get contact info
+    - Set up meetings
+    - Save to your system
     """)
 
 with use_case_col3:
     st.markdown("""
-    ### 📚 Information Desk
-    - Answer FAQs
-    - Product information
-    - Navigation assistance
-    - Document search
+    ### 📚 Answer Questions
+    - Handle FAQs
+    - Share product info
+    - Help with navigation
+    - Search documents
     """)
 
 st.markdown("---")
 
 # CTA
-st.markdown("## 🚀 Ready to Experience These Features?")
+st.markdown("## 🚀 Ready to Try?")
 
 cta_col1, cta_col2 = st.columns(2)
 
 with cta_col1:
-    if st.button("🎙️ Try Live Demo", type="primary", use_container_width=True):
+    if st.button("🎙️ Start Now", type="primary", use_container_width=True):
         st.switch_page("app.py")
 
 with cta_col2:
-    if st.button("📧 Contact Sales", type="secondary", use_container_width=True):
+    if st.button("📧 Need Help?", type="secondary", use_container_width=True):
         st.switch_page("pages/4_📧_Contact.py")

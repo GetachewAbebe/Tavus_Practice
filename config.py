@@ -15,8 +15,9 @@ BRAND_DOMAIN = "voiceflow-ai.com"
 
 # API Configuration
 TAVUS_API_KEY = os.getenv("API_KEY")
-PERSONA_ID = os.getenv("BROADGATE_PERSONA_ID")  # Will be renamed in .env
+VOICEFLOW_PERSONA_ID = os.getenv("VOICEFLOW_PERSONA_ID")
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
+REPLICA_ID = os.getenv("REPLICA_ID", "rfe12d8b9597")  # Default replica ID
 
 # Database Configuration
 DB_PATH = "voiceflow_leads.db"

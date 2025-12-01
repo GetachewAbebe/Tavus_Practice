@@ -51,8 +51,28 @@
 
 5. **Start the application**
    ```bash
-   streamlit run app.py
+   streamlit run streamlit.py
    ```
+
+## ☁️ Deploying to Streamlit Cloud
+
+To deploy to Streamlit Cloud, you need to configure secrets instead of using a `.env` file:
+
+1. Push your code to GitHub
+2. Create a new app on [Streamlit Cloud](https://share.streamlit.io)
+3. Set **Main file path** to: `streamlit.py`
+4. In your app's **Settings > Secrets**, add:
+
+```toml
+API_KEY = "your_tavus_api_key_here"
+VOICEFLOW_PERSONA_ID = "your_persona_id_here"
+WEBHOOK_URL = "https://your-webhook-endpoint.com/webhook"
+REPLICA_ID = "rfe12d8b9597"
+```
+
+5. Save and your app will automatically reboot
+
+**📖 See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.**
 
 ## 📁 Project Structure
 
@@ -77,10 +97,11 @@ Tavus_Practice/
 ├── assets/             # Media files
 │   └── demo.gif
 ├── config.py           # Configuration
-├── app.py              # Main entry point
+├── streamlit.py        # Main entry point
 ├── setup.py            # Setup script
 ├── requirements.txt
 ├── .env.example        # Environment template
+├── DEPLOYMENT.md       # Deployment guide
 └── README.md
 ```
 
@@ -119,6 +140,11 @@ Then run `python setup.py` to update.
 | `WEBHOOK_URL` | Webhook endpoint URL | No |
 | `REPLICA_ID` | Default replica ID | No |
 
+**Local Development:** Use `.env` file  
+**Streamlit Cloud:** Use Secrets (TOML format)
+
+The app automatically detects which environment it's running in.
+
 ### Database
 
 Conversations and leads are stored in `voiceflow_leads.db` (SQLite).
@@ -138,7 +164,7 @@ Configure webhooks to receive real-time notifications:
 }
 ```
 
-Set `WEBHOOK_URL` in your `.env` file to enable.
+Set `WEBHOOK_URL` in your `.env` file or Streamlit Cloud secrets to enable.
 
 ## 📊 Analytics
 

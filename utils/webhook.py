@@ -3,19 +3,14 @@ VoiceFlow AI - Webhook Module
 Webhook integration and notification handling
 """
 
-import os
 import requests
 from datetime import datetime
-from dotenv import load_dotenv
-
-load_dotenv()
+from config import WEBHOOK_URL
 
 
 def send_to_webhook(conv_id: str, name: str = None, email: str = None, transcript_text: str = ""):
     """Send lead data to webhook endpoint"""
-    url = os.getenv("WEBHOOK_URL")
-    
-    if not url:
+    if not WEBHOOK_URL:
         print("WEBHOOK_URL not configured, skipping webhook")
         return
     
@@ -28,7 +23,7 @@ def send_to_webhook(conv_id: str, name: str = None, email: str = None, transcrip
     }
     
     try:
-        response = requests.post(url, json=payload, timeout=5)
+        response = requests.post(WEBHOOK_URL, json=payload, timeout=5)
         response.raise_for_status()
         print(f"✓ Webhook sent successfully: {payload}")
         return True

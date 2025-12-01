@@ -3,19 +3,15 @@ VoiceFlow AI - API Client
 Functions for interacting with the Tavus API
 """
 
-import os
 import requests
-from dotenv import load_dotenv
-
-load_dotenv()
+from config import TAVUS_API_KEY
 
 
 def _headers():
     """Get API headers with authentication"""
-    key = os.getenv("API_KEY")
-    if not key:
-        raise ValueError("API_KEY missing in .env")
-    return {"x-api-key": key}
+    if not TAVUS_API_KEY:
+        raise ValueError("API_KEY missing. Please configure it in Streamlit Cloud secrets or .env file")
+    return {"x-api-key": TAVUS_API_KEY}
 
 
 # ========== Documents ==========

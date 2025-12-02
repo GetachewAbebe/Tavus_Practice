@@ -42,19 +42,56 @@ col_demo1, col_demo2 = st.columns([3, 1])
 
 with col_demo1:
     if not st.session_state.call_url:
+        # Advanced Settings Expander
+        with st.expander("⚙️ Advanced Settings", expanded=False):
+            st.markdown("**Optional Configuration**")
+            
+            test_mode = st.checkbox(
+                "🧪 Test Mode (No Costs)", 
+                value=False,
+                help="Creates conversation without replica joining. No costs incurred, status will be 'ended'."
+            )
+            
+            custom_persona = st.text_input(
+                "Persona ID",
+                value="",
+                placeholder=VOICEFLOW_PERSONA_ID or "Default persona",
+                help="Override the default persona ID"
+            )
+            
+            custom_replica = st.text_input(
+                "Replica ID",
+                value="",
+                placeholder="Default replica",
+                help="Override the default replica ID"
+            )
+            
+            custom_callback = st.text_input(
+                "Callback URL",
+                value="",
+                placeholder=WEBHOOK_URL or "None",
+                help="Webhook URL for conversation events"
+            )
+        
         if st.button("🎙️ Start Conversation", type="primary", use_container_width=True):
-            if not VOICEFLOW_PERSONA_ID:
+            if not VOICEFLOW_PERSONA_ID and not custom_persona:
                 show_error_message("Setup needed. Contact support.")
             else:
                 try:
                     with st.spinner("Getting ready..."):
                         result = create_conversation(
-                            persona_id=VOICEFLOW_PERSONA_ID,
-                            callback_url=WEBHOOK_URL
+                            persona_id=custom_persona or VOICEFLOW_PERSONA_ID,
+                            replica_id=custom_replica or None,
+                            callback_url=custom_callback or WEBHOOK_URL,
+                            test_mode=test_mode
                         )
                         st.session_state.call_url = result.get("conversation_url")
                         st.session_state.conversation_id = result.get("conversation_id")
-                        show_success_message("Ready!")
+                        
+                        if test_mode:
+                            show_success_message("Test conversation created! (No costs)")
+                        else:
+                            show_success_message("Ready!")
                         st.rerun()
                 except Exception as e:
                     show_error_message(f"Error: {str(e)}")

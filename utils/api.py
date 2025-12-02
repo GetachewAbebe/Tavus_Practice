@@ -61,8 +61,15 @@ def create_persona(name: str, system_prompt: str, document_ids: list):
 
 # ========== Conversations ==========
 
-def create_conversation(persona_id: str, replica_id: str = None, callback_url: str = None):
-    """Create a new conversation with a persona"""
+def create_conversation(persona_id: str, replica_id: str = None, callback_url: str = None, test_mode: bool = False):
+    """Create a new conversation with a persona
+    
+    Args:
+        persona_id: ID of the persona to use
+        replica_id: ID of the replica (defaults to config REPLICA_ID)
+        callback_url: Optional webhook URL for conversation events
+        test_mode: If True, creates conversation without replica joining (no costs)
+    """
     from config import REPLICA_ID
     
     if replica_id is None:
@@ -71,6 +78,8 @@ def create_conversation(persona_id: str, replica_id: str = None, callback_url: s
     payload = {"persona_id": persona_id, "replica_id": replica_id}
     if callback_url:
         payload["callback_url"] = callback_url
+    if test_mode:
+        payload["test_mode"] = test_mode
     
     r = requests.post("https://tavusapi.com/v2/conversations", json=payload, headers=_headers())
     r.raise_for_status()

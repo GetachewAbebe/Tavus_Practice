@@ -59,6 +59,39 @@ def create_persona(name: str, system_prompt: str, document_ids: list):
     return r.json()
 
 
+def update_persona(persona_id: str, operations: list):
+    """Update a persona using JSON Patch operations"""
+    r = requests.patch(f"https://tavusapi.com/v2/personas/{persona_id}", json=operations, headers=_headers())
+    r.raise_for_status()
+    return r.json()
+
+
+def update_persona_voice(persona_id: str, tts_engine: str, voice_id: str):
+    """Update persona's voice settings"""
+    # We use 'replace' if layers/tts exists, or 'add' if it doesn't. 
+    # Since we don't know, we can try to fetch first or just use 'add'/'replace' on the path.
+    # Tavus API documentation suggests using 'replace' for existing fields.
+    # A safe bet is to replace the entire 'layers' object or specific paths.
+    
+    # Let's try to replace the tts configuration
+    operations = [
+        {
+            "op": "add",
+            "path": "/layers/tts",
+            "value": {
+                "tts_engine": tts_engine,
+                "external_voice_id": voice_id
+            }
+        }
+    ]
+    
+    # If 'add' fails because it exists, we might need 'replace'. 
+    # However, JSON Patch 'add' usually replaces if the member exists in an object.
+    # Let's try 'add' first as it covers both creation and replacement for object members.
+    
+    return update_persona(persona_id, operations)
+
+
 # ========== Conversations ==========
 
 def create_conversation(persona_id: str, replica_id: str = None, callback_url: str = None, test_mode: bool = False):
@@ -70,7 +103,7 @@ def create_conversation(persona_id: str, replica_id: str = None, callback_url: s
         callback_url: Optional webhook URL for conversation events
         test_mode: If True, creates conversation without replica joining (no costs)
     """
-    from config import REPLICA_ID
+    from config import REPLICA_ID, TTS_ENGINE, BRITISH_VOICE_ID
     
     if replica_id is None:
         replica_id = REPLICA_ID

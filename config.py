@@ -33,6 +33,11 @@ VOICEFLOW_PERSONA_ID = get_config("VOICEFLOW_PERSONA_ID")
 WEBHOOK_URL = get_config("WEBHOOK_URL")
 REPLICA_ID = get_config("REPLICA_ID", "rfe12d8b9597")  # Default replica ID
 
+# Voice Configuration (British Accent)
+# Using ElevenLabs' British accent voice by default
+TTS_ENGINE = get_config("TTS_ENGINE", "elevenlabs")  # Options: "cartesia" or "elevenlabs"
+BRITISH_VOICE_ID = get_config("BRITISH_VOICE_ID", "M336tBVZHWWiWb4R54ui")  # ElevenLabs: Custom British Voice
+
 # Database Configuration
 DB_PATH = "voiceflow_leads.db"
 

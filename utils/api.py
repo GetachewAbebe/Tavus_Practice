@@ -88,13 +88,12 @@ def update_persona_voice(persona_id: str, tts_engine: str, voice_id: str):
     # If 'add' fails because it exists, we might need 'replace'. 
     # However, JSON Patch 'add' usually replaces if the member exists in an object.
     # Let's try 'add' first as it covers both creation and replacement for object members.
-    
     return update_persona(persona_id, operations)
 
 
 # ========== Conversations ==========
 
-def create_conversation(persona_id: str, replica_id: str = None, callback_url: str = None, test_mode: bool = False):
+def create_conversation(persona_id: str, replica_id: str = None, callback_url: str = None, test_mode: bool = False, custom_greeting: str = "Hello! I'm your AI assistant. How can I help you today?"):
     """Create a new conversation with a persona
     
     Args:
@@ -102,8 +101,9 @@ def create_conversation(persona_id: str, replica_id: str = None, callback_url: s
         replica_id: ID of the replica (defaults to config REPLICA_ID)
         callback_url: Optional webhook URL for conversation events
         test_mode: If True, creates conversation without replica joining (no costs)
+        custom_greeting: Initial message spoken by the AI
     """
-    from config import REPLICA_ID, TTS_ENGINE, BRITISH_VOICE_ID
+    from config import REPLICA_ID
     
     if replica_id is None:
         replica_id = REPLICA_ID
@@ -111,7 +111,8 @@ def create_conversation(persona_id: str, replica_id: str = None, callback_url: s
     payload = {
         "persona_id": persona_id, 
         "replica_id": replica_id,
-        "conversational_context": "Start the conversation by greeting the user and introducing yourself."
+        "conversational_context": "Start the conversation by greeting the user and introducing yourself.",
+        "custom_greeting": custom_greeting
     }
     if callback_url:
         payload["callback_url"] = callback_url

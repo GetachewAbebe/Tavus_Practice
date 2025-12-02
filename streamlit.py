@@ -73,6 +73,12 @@ with col_demo1:
                 placeholder=WEBHOOK_URL or "None",
                 help="Webhook URL for conversation events"
             )
+
+            custom_greeting = st.text_input(
+                "Custom Greeting (Speak First)",
+                value="Hello! I'm your AI assistant. How can I help you today?",
+                help="The AI will speak this message immediately when the conversation starts."
+            )
         
         if st.button("🎙️ Start Conversation", type="primary", use_container_width=True):
             if not VOICEFLOW_PERSONA_ID and not custom_persona:
@@ -88,7 +94,8 @@ with col_demo1:
                             persona_id=custom_persona or VOICEFLOW_PERSONA_ID,
                             replica_id=custom_replica or None,
                             callback_url=custom_callback or WEBHOOK_URL,
-                            test_mode=test_mode
+                            test_mode=test_mode,
+                            custom_greeting=custom_greeting
                         )
                         
                         # Validate response before setting session state

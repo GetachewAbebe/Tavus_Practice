@@ -79,6 +79,10 @@ with col_demo1:
                 show_error_message("Setup needed. Contact support.")
             else:
                 try:
+                    # Clear any existing session state to prevent 404 errors on restart
+                    st.session_state.call_url = None
+                    st.session_state.conversation_id = None
+                    
                     with st.spinner("Getting ready..."):
                         result = create_conversation(
                             persona_id=custom_persona or VOICEFLOW_PERSONA_ID,
@@ -86,6 +90,11 @@ with col_demo1:
                             callback_url=custom_callback or WEBHOOK_URL,
                             test_mode=test_mode
                         )
+                        
+                        # Validate response before setting session state
+                        if not result or not result.get("conversation_url"):
+                            raise ValueError("Invalid API response - no conversation URL received")
+                        
                         st.session_state.call_url = result.get("conversation_url")
                         st.session_state.conversation_id = result.get("conversation_id")
                         
@@ -95,6 +104,9 @@ with col_demo1:
                             show_success_message("Ready!")
                         st.rerun()
                 except Exception as e:
+                    # Clear session state on error to prevent stale URLs
+                    st.session_state.call_url = None
+                    st.session_state.conversation_id = None
                     show_error_message(f"Error: {str(e)}")
     else:
         if st.button("🛑 End Call", type="secondary", use_container_width=True):

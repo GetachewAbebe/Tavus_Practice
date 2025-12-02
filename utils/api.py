@@ -75,7 +75,11 @@ def create_conversation(persona_id: str, replica_id: str = None, callback_url: s
     if replica_id is None:
         replica_id = REPLICA_ID
     
-    payload = {"persona_id": persona_id, "replica_id": replica_id}
+    payload = {
+        "persona_id": persona_id, 
+        "replica_id": replica_id,
+        "conversational_context": "Start the conversation by greeting the user and introducing yourself."
+    }
     if callback_url:
         payload["callback_url"] = callback_url
     if test_mode:

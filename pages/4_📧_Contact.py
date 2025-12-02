@@ -11,7 +11,8 @@ from components import apply_custom_css, render_sidebar, show_success_message
 st.set_page_config(
     page_title=f"{BRAND_NAME} | Contact",
     page_icon="📧",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
 # Apply styling and sidebar
@@ -68,31 +69,31 @@ with col2:
     
     st.markdown("""
     <div style="
-        background: #1E293B;
+        background: #F8FAFC;
         border-radius: 12px;
         padding: 1.5rem;
-        border: 1px solid #334155;
+        border: 1px solid #E2E8F0;
     ">
-        <h4 style="color: #F8FAFC; margin-top: 0;">VoiceFlow AI</h4>
+        <h4 style="color: #1E293B; margin-top: 0;">VoiceFlow AI</h4>
         
         <div style="margin: 1rem 0;">
-            <div style="color: #94A3B8; font-size: 0.875rem;">Email</div>
-            <div style="color: #F8FAFC;">support@voiceflow-ai.com</div>
+            <div style="color: #64748B; font-size: 0.875rem;">Email</div>
+            <div style="color: #1E293B;">support@voiceflow-ai.com</div>
         </div>
         
         <div style="margin: 1rem 0;">
-            <div style="color: #94A3B8; font-size: 0.875rem;">Phone</div>
-            <div style="color: #F8FAFC;">+1 (555) 123-4567</div>
+            <div style="color: #64748B; font-size: 0.875rem;">Phone</div>
+            <div style="color: #1E293B;">+1 (555) 123-4567</div>
         </div>
         
         <div style="margin: 1rem 0;">
-            <div style="color: #94A3B8; font-size: 0.875rem;">Hours</div>
-            <div style="color: #F8FAFC;">Mon-Fri: 9AM - 6PM EST</div>
+            <div style="color: #64748B; font-size: 0.875rem;">Hours</div>
+            <div style="color: #1E293B;">Mon-Fri: 9AM - 6PM EST</div>
         </div>
         
         <div style="margin: 1rem 0;">
-            <div style="color: #94A3B8; font-size: 0.875rem;">Location</div>
-            <div style="color: #F8FAFC;">San Francisco, CA</div>
+            <div style="color: #64748B; font-size: 0.875rem;">Location</div>
+            <div style="color: #1E293B;">San Francisco, CA</div>
         </div>
     </div>
     """, unsafe_allow_html=True)

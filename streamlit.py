@@ -12,7 +12,8 @@ from utils import create_conversation, end_conversation, init_db
 st.set_page_config(
     page_title=f"{BRAND_NAME}",
     page_icon=PAGE_ICON,
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
 # Apply styling and sidebar

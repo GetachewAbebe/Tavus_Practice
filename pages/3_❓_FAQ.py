@@ -11,7 +11,8 @@ from components import apply_custom_css, render_sidebar
 st.set_page_config(
     page_title=f"{BRAND_NAME} | FAQ",
     page_icon="❓",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
 # Apply styling and sidebar

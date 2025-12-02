@@ -14,7 +14,8 @@ from utils import init_db, get_all_leads, get_lead_count
 st.set_page_config(
     page_title=f"{BRAND_NAME} | Analytics",
     page_icon="📊",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
 # Apply styling and sidebar

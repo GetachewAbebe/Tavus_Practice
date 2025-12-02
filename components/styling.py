@@ -13,7 +13,7 @@ def apply_custom_css():
     <style>
         /* Global Styles */
         .stApp {{
-            background: linear-gradient(135deg, {BACKGROUND_COLOR} 0%, #1a2332 100%);
+            background: linear-gradient(135deg, {BACKGROUND_COLOR} 0%, #F1F5F9 100%);
         }}
         
         /* Header Styles */
@@ -44,14 +44,14 @@ def apply_custom_css():
             background: {SECONDARY_BG_COLOR};
             border-radius: 12px;
             padding: 1.5rem;
-            border: 1px solid #334155;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }}
         
         /* Input Styles */
         .stTextInput > div > div > input {{
             background: {SECONDARY_BG_COLOR};
-            border: 1px solid #334155;
+            border: 1px solid #E2E8F0;
             border-radius: 8px;
             color: {TEXT_COLOR};
         }}
@@ -105,7 +105,7 @@ def apply_custom_css():
             padding: 2rem;
             max-width: 600px;
             margin: 2rem auto;
-            border: 1px solid #334155;
+            border: 1px solid #E2E8F0;
         }}
     </style>
     """, unsafe_allow_html=True)

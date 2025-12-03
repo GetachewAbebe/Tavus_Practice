@@ -1,5 +1,5 @@
 """
-VoiceFlow AI - Analytics Dashboard
+Broadgate - Analytics Dashboard
 Real-time performance metrics and conversation insights
 """
 
@@ -130,7 +130,7 @@ if st.button("📄 Download as Spreadsheet", type="secondary"):
         st.download_button(
             label="⬇️ Download Now",
             data=output.getvalue(),
-            file_name=f"voiceflow_calls_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+            file_name=f"broadgate_calls_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
             mime="text/csv"
         )
     else:

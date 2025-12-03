@@ -1,5 +1,5 @@
 """
-VoiceFlow AI - Contact Page
+Broadgate - Contact Page
 Contact form and support information
 """
 
@@ -74,11 +74,11 @@ with col2:
         padding: 1.5rem;
         border: 1px solid #E2E8F0;
     ">
-        <h4 style="color: #1E293B; margin-top: 0;">VoiceFlow AI</h4>
+        <h4 style="color: #1E293B; margin-top: 0;">Broadgate</h4>
         
         <div style="margin: 1rem 0;">
             <div style="color: #64748B; font-size: 0.875rem;">Email</div>
-            <div style="color: #1E293B;">support@voiceflow-ai.com</div>
+            <div style="color: #1E293B;">support@broadgate.ai</div>
         </div>
         
         <div style="margin: 1rem 0;">

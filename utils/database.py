@@ -1,5 +1,5 @@
 """
-VoiceFlow AI - Database Module
+Broadgate - Database Module
 SQLite database operations for lead management
 """
 

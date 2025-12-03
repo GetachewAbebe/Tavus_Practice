@@ -1,5 +1,5 @@
 """
-VoiceFlow AI - Features Page
+Broadgate - Features Page
 Platform capabilities and feature showcase
 """
 
@@ -21,7 +21,7 @@ render_sidebar()
 
 # Header
 st.markdown("# ⚡ What You Can Do")
-st.markdown("See what VoiceFlow AI can help you with")
+st.markdown("See what Broadgate can help you with")
 st.markdown("---")
 
 # Core Features

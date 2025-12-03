@@ -1,5 +1,5 @@
 """
-VoiceFlow AI - API Client
+Broadgate - API Client
 Functions for interacting with the Tavus API
 """
 
@@ -93,7 +93,7 @@ def update_persona_voice(persona_id: str, tts_engine: str, voice_id: str):
 
 # ========== Conversations ==========
 
-def create_conversation(persona_id: str, replica_id: str = None, callback_url: str = None, test_mode: bool = False, custom_greeting: str = "Hello! I'm your AI assistant. How can I help you today?"):
+def create_conversation(persona_id: str, replica_id: str = None, callback_url: str = None, test_mode: bool = False, custom_greeting: str = "Hello! I'm your AI assistant. How can I help you today?", context_text: str = None):
     """Create a new conversation with a persona
     
     Args:
@@ -102,16 +102,21 @@ def create_conversation(persona_id: str, replica_id: str = None, callback_url: s
         callback_url: Optional webhook URL for conversation events
         test_mode: If True, creates conversation without replica joining (no costs)
         custom_greeting: Initial message spoken by the AI
+        context_text: Optional text to provide as context/knowledge base for the conversation
     """
     from config import REPLICA_ID
     
     if replica_id is None:
         replica_id = REPLICA_ID
     
+    base_context = "Start the conversation by greeting the user and introducing yourself."
+    if context_text:
+        base_context += f"\n\nHere is some background information to help you answer questions:\n{context_text}"
+    
     payload = {
         "persona_id": persona_id, 
         "replica_id": replica_id,
-        "conversational_context": "Start the conversation by greeting the user and introducing yourself.",
+        "conversational_context": base_context,
         "custom_greeting": custom_greeting
     }
     if callback_url:

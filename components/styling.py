@@ -1,5 +1,5 @@
 """
-VoiceFlow AI - Styling Module
+Broadgate - Styling Module
 Custom CSS and theme management for the application
 """
 

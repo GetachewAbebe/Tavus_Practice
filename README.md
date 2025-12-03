@@ -1,4 +1,4 @@
-# VoiceFlow AI
+# Broadgate
 
 **Intelligent Voice Automation Platform** - Transform your customer interactions with AI-powered voice conversations.
 
@@ -47,11 +47,11 @@
    python setup.py
    ```
    
-   This will create your persona and provide a `VOICEFLOW_PERSONA_ID`. Add this to your `.env` file.
+   This will create your persona and provide a `BROADGATE_PERSONA_ID`. Add this to your `.env` file.
 
 5. **Start the application**
    ```bash
-   streamlit run streamlit.py
+   streamlit run app.py
    ```
 
 ## ☁️ Deploying to Streamlit Cloud
@@ -65,7 +65,7 @@ To deploy to Streamlit Cloud, you need to configure secrets instead of using a `
 
 ```toml
 API_KEY = "your_tavus_api_key_here"
-VOICEFLOW_PERSONA_ID = "your_persona_id_here"
+BROADGATE_PERSONA_ID = "p92fb560a56c"
 WEBHOOK_URL = "https://your-webhook-endpoint.com/webhook"
 REPLICA_ID = "rfe12d8b9597"
 ```
@@ -136,7 +136,7 @@ Then run `python setup.py` to update.
 | Variable | Description | Required |
 |----------|-------------|----------|
 | `API_KEY` | Tavus API key | Yes |
-| `VOICEFLOW_PERSONA_ID` | Generated persona ID | Yes |
+| `BROADGATE_PERSONA_ID` | Generated persona ID | Yes |
 | `WEBHOOK_URL` | Webhook endpoint URL | No |
 | `REPLICA_ID` | Default replica ID | No |
 
@@ -147,7 +147,7 @@ The app automatically detects which environment it's running in.
 
 ### Database
 
-Conversations and leads are stored in `voiceflow_leads.db` (SQLite).
+Conversations and leads are stored in `broadgate_leads.db` (SQLite).
 
 ## 🔗 Webhooks
 
@@ -187,7 +187,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - **Documentation**: Check the FAQ page in the app
 - **Issues**: Open an issue on GitHub
-- **Email**: support@voiceflow-ai.com
+- **Email**: support@broadgate.ai
 
 ## 🙏 Acknowledgments
 
@@ -197,4 +197,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**VoiceFlow AI** - Intelligent Voice Automation Platform © 2024
+**Broadgate** - Intelligent Voice Automation Platform © 2024

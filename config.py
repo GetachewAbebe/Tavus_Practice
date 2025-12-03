@@ -1,5 +1,5 @@
 """
-VoiceFlow AI - Configuration Module
+Broadgate - Configuration Module
 Centralized configuration and environment variable management
 """
 import os
@@ -23,13 +23,13 @@ def get_config(key: str, default=None):
     return os.getenv(key, default)
 
 # Brand Configuration
-BRAND_NAME = "VoiceFlow AI"
+BRAND_NAME = "Broadgate"
 BRAND_TAGLINE = "Intelligent Voice Automation Platform"
-BRAND_DOMAIN = "voiceflow-ai.com"
+BRAND_DOMAIN = "broadgate.ai"
 
 # API Configuration
 TAVUS_API_KEY = get_config("API_KEY")
-VOICEFLOW_PERSONA_ID = get_config("VOICEFLOW_PERSONA_ID")
+BROADGATE_PERSONA_ID = get_config("BROADGATE_PERSONA_ID", "p92fb560a56c")
 WEBHOOK_URL = get_config("WEBHOOK_URL")
 REPLICA_ID = get_config("REPLICA_ID", "rfe12d8b9597")  # Default replica ID
 
@@ -39,7 +39,7 @@ TTS_ENGINE = get_config("TTS_ENGINE", "elevenlabs")  # Options: "cartesia" or "e
 BRITISH_VOICE_ID = get_config("BRITISH_VOICE_ID", "M336tBVZHWWiWb4R54ui")  # ElevenLabs: Custom British Voice
 
 # Database Configuration
-DB_PATH = "voiceflow_leads.db"
+DB_PATH = "broadgate_leads.db"
 
 # UI Configuration
 PAGE_TITLE = f"{BRAND_NAME} | Enterprise Edition"

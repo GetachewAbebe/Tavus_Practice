@@ -1,6 +1,6 @@
 # Deploying to Streamlit Cloud
 
-This guide will help you deploy VoiceFlow AI to Streamlit Cloud.
+This guide will help you deploy Broadgate to Streamlit Cloud.
 
 ## Prerequisites
 
@@ -17,19 +17,6 @@ git add .
 git commit -m "Prepare for Streamlit Cloud deployment"
 git push origin main
 ```
-
-### 2. Create a New App on Streamlit Cloud
-
-1. Go to [share.streamlit.io](https://share.streamlit.io)
-2. Click **"New app"**
-3. Select your repository
-4. Set **Main file path** to: `streamlit.py`
-5. Click **"Deploy"**
-
-### 3. Configure Secrets
-
-**IMPORTANT:** Your app will fail without proper secrets configuration.
-
 1. Go to your app's dashboard
 2. Click **Settings** (⚙️ icon)
 3. Navigate to **Secrets** section
@@ -37,7 +24,7 @@ git push origin main
 
 ```toml
 API_KEY = "your_tavus_api_key_here"
-VOICEFLOW_PERSONA_ID = "your_persona_id_here"
+BROADGATE_PERSONA_ID = "p92fb560a56c"
 WEBHOOK_URL = "https://your-webhook-endpoint.com/webhook"
 REPLICA_ID = "rfe12d8b9597"
 ```
@@ -49,7 +36,7 @@ Run setup locally first:
 python setup.py
 ```
 
-This will output your `VOICEFLOW_PERSONA_ID`. Copy it to Streamlit Cloud secrets.
+This will output your `BROADGATE_PERSONA_ID`. Copy it to Streamlit Cloud secrets.
 
 ### 4. Save and Reboot
 
@@ -64,7 +51,7 @@ This will output your `VOICEFLOW_PERSONA_ID`. Copy it to Streamlit Cloud secrets
 
 **Solution:**
 - Verify secrets are added in Streamlit Cloud
-- Ensure key names match exactly: `API_KEY`, `VOICEFLOW_PERSONA_ID`, etc.
+- Ensure key names match exactly: `API_KEY`, `BROADGATE_PERSONA_ID`, etc.
 - Click "Save" and wait for app to reboot
 
 ### Error: "API_KEY missing"
@@ -110,7 +97,7 @@ If you encounter issues:
 1. Check Streamlit Cloud logs (Settings > Logs)
 2. Verify all secrets are configured
 3. Ensure your Tavus API key is valid
-4. Contact support@voiceflow-ai.com
+4. Contact support@broadgate.ai
 
 ---
 

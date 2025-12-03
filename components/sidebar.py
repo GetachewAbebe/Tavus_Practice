@@ -1,5 +1,5 @@
 """
-VoiceFlow AI - Sidebar Component
+Broadgate - Sidebar Component
 Reusable sidebar with branding and system status
 """
 

@@ -1,4 +1,3 @@
-# setup.py
 import os
 from dotenv import load_dotenv
 from utils import (
@@ -11,16 +10,18 @@ from utils import (
 load_dotenv()
 
 # --- Configuration ---
-DOCUMENT_NAME = "VoiceFlow AI Knowledge Base v1"
-PERSONA_NAME = "VoiceFlow AI Assistant v2"
-KNOWLEDGE_BASE_URL = "https://pastebin.com/FU1LPXZu"
+DOCUMENT_NAME = "Broadgate Knowledge Base v1"
+PERSONA_NAME = "Broadgate Assistant v1"
 
 PERSONA_SYSTEM_PROMPT = """
-You are Alex, a specialized assistant for VoiceFlow AI. Your ONLY source of information is the
-'VoiceFlow AI Knowledge Base' document provided.
+You are Alex, a specialized assistant for Broadgate. Your ONLY source of information is the
+'Broadgate Knowledge Base' document provided.
 
-STRICT CONVERSATION FLOW:
-1. ALWAYS start the conversation by introducing yourself: "Hi! I'm Alex, your VoiceFlow AI assistant. How can I help you today?"
+Your goal is to answer user questions accurately based ONLY on the provided document.
+If the answer is not in the document, politely say you don't know.
+
+Guidelines:
+1. ALWAYS start the conversation by introducing yourself: "Hi! I'm Alex, your Broadgate assistant. How can I help you today?"
 2. After they respond, ask: "May I have your name please?"
 3. Once they give their name, say: "Nice to meet you, [Name]! Could you please share your email so I can send you more information?"
 4. Then proceed with answering their questions from the knowledge base.
@@ -33,26 +34,8 @@ Be friendly, professional, and natural. Always remember you are Alex.
 def provision_resources():
     """Provision Tavus resources (documents and personas)"""
     print("\n" + "="*50)
-    print("VoiceFlow AI - Resource Provisioning")
+    print("Broadgate - Resource Provisioning")
     print("="*50 + "\n")
-    
-    # Check for document
-    print(f"Checking for document: {DOCUMENT_NAME}")
-    document = find_document_by_name(DOCUMENT_NAME)
-    
-    if not document:
-        print("Document not found. Creating...")
-        document = create_document_from_url(DOCUMENT_NAME, KNOWLEDGE_BASE_URL)
-        print("✓ Document created successfully")
-    else:
-        print("✓ Document already exists")
-    
-    document_id = document.get("document_id")
-    if not document_id:
-        print("ERROR: Could not get Document ID.")
-        return
-    
-    print(f"Document ID: {document_id}\n")
     
     # Check for persona
     print(f"Checking for persona: {PERSONA_NAME}")
@@ -60,7 +43,8 @@ def provision_resources():
     
     if not persona:
         print("Persona not found. Creating...")
-        persona = create_persona(PERSONA_NAME, PERSONA_SYSTEM_PROMPT, [document_id])
+        # Create persona without documents (we inject context dynamically)
+        persona = create_persona(PERSONA_NAME, PERSONA_SYSTEM_PROMPT, [])
         print("✓ Persona created successfully")
     else:
         print("✓ Persona already exists")
@@ -74,7 +58,7 @@ def provision_resources():
     print("SETUP COMPLETE!")
     print(f"Your Persona ID is: {persona_id}")
     print("\nPlease add this to your .env file:")
-    print(f"VOICEFLOW_PERSONA_ID={persona_id}")
+    print(f"BROADGATE_PERSONA_ID={persona_id}")
     print("="*50 + "\n")
 
 if __name__ == "__main__":

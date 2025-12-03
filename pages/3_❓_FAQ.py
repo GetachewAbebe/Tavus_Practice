@@ -1,5 +1,5 @@
 """
-VoiceFlow AI - FAQ Page
+Broadgate - FAQ Page
 Frequently asked questions and help documentation
 """
 
@@ -21,7 +21,7 @@ render_sidebar()
 
 # Header
 st.markdown("# ❓ Frequently Asked Questions")
-st.markdown("Find answers to common questions about VoiceFlow AI")
+st.markdown("Find answers to common questions about Broadgate")
 st.markdown("---")
 
 # Search
@@ -35,9 +35,9 @@ tab1, tab2, tab3, tab4 = st.tabs(["🚀 Getting Started", "💡 Features", "🔧
 with tab1:
     st.markdown("### Getting Started")
     
-    with st.expander("❓ What is VoiceFlow AI?"):
+    with st.expander("❓ What is Broadgate?"):
         st.markdown("""
-        VoiceFlow AI is an intelligent voice automation platform that enables businesses to create 
+        Broadgate is an intelligent voice automation platform that enables businesses to create 
         natural, AI-powered voice conversations. Our platform combines advanced AI with easy-to-use 
         tools to help you automate customer interactions, capture leads, and provide 24/7 support.
         """)
@@ -82,9 +82,9 @@ with tab1:
 with tab2:
     st.markdown("### Features")
     
-    with st.expander("❓ What can I do with VoiceFlow AI?"):
+    with st.expander("❓ What can I do with Broadgate?"):
         st.markdown("""
-        VoiceFlow AI enables you to:
+        Broadgate enables you to:
         - Create AI-powered voice conversations
         - Capture leads automatically
         - Integrate with your CRM via webhooks
@@ -117,7 +117,7 @@ with tab2:
     
     with st.expander("❓ What languages are supported?"):
         st.markdown("""
-        VoiceFlow AI supports multiple languages including:
+        Broadgate supports multiple languages including:
         - English
         - Spanish
         - French
@@ -137,7 +137,7 @@ with tab3:
         
         ```
         API_KEY=your_tavus_api_key
-        VOICEFLOW_PERSONA_ID=your_persona_id
+        BROADGATE_PERSONA_ID=your_persona_id
         WEBHOOK_URL=https://your-webhook-endpoint.com
         REPLICA_ID=rfe12d8b9597
         ```
@@ -166,7 +166,7 @@ with tab3:
     with st.expander("❓ Where is data stored?"):
         st.markdown("""
         Data is stored in two locations:
-        1. **Local Database**: SQLite database (`voiceflow_leads.db`)
+        1. **Local Database**: SQLite database (`broadgate_leads.db`)
         2. **Tavus Cloud**: Conversation recordings and transcripts
         
         All data is encrypted and secure. You have full control over local data.
@@ -188,7 +188,7 @@ with tab4:
     
     with st.expander("❓ How much does it cost?"):
         st.markdown("""
-        VoiceFlow AI uses Tavus API pricing:
+        Broadgate uses Tavus API pricing:
         - Pay-as-you-go model
         - No upfront costs
         - Charged per conversation minute
@@ -209,7 +209,7 @@ with tab4:
     
     with st.expander("❓ What's included in the platform?"):
         st.markdown("""
-        The VoiceFlow AI platform includes:
+        The Broadgate platform includes:
         - ✅ Unlimited personas
         - ✅ Knowledge base management
         - ✅ Analytics dashboard

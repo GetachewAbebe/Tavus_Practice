@@ -1,5 +1,5 @@
 """
-VoiceFlow AI - Modal Components
+Broadgate - Modal Components
 Modal dialogs for conversations and interactions
 """
 

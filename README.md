@@ -37,10 +37,7 @@
    cp .env.example .env
    ```
    
-   Edit `.env` and add your Tavus API key:
-   ```
-   API_KEY=your_tavus_api_key_here
-   ```
+   Edit `.env` and add your Tavus API key and other settings.
 
 4. **Run setup script**
    ```bash
@@ -60,14 +57,25 @@ To deploy to Streamlit Cloud, you need to configure secrets instead of using a `
 
 1. Push your code to GitHub
 2. Create a new app on [Streamlit Cloud](https://share.streamlit.io)
-3. Set **Main file path** to: `streamlit.py`
+3. Set **Main file path** to: `app.py`
 4. In your app's **Settings > Secrets**, add:
 
 ```toml
+# Tavus API Key
 API_KEY = "your_tavus_api_key_here"
+
+# Broadgate Persona ID
 BROADGATE_PERSONA_ID = "p92fb560a56c"
-WEBHOOK_URL = "https://your-webhook-endpoint.com/webhook"
+
+# Replica ID
 REPLICA_ID = "rfe12d8b9597"
+
+# Voice Configuration
+TTS_ENGINE = "elevenlabs"
+BRITISH_VOICE_ID = "M336tBVZHWWiWb4R54ui"
+
+# Webhook URL (Optional)
+WEBHOOK_URL = "https://your-webhook-endpoint.com/webhook"
 ```
 
 5. Save and your app will automatically reboot
@@ -96,8 +104,10 @@ Tavus_Practice/
 │   └── 4_📧_Contact.py
 ├── assets/             # Media files
 │   └── demo.gif
+├── Konwledge_Base/     # Knowledge base documents
+│   └── Broadgate.pdf
 ├── config.py           # Configuration
-├── streamlit.py        # Main entry point
+├── app.py              # Main entry point
 ├── setup.py            # Setup script
 ├── requirements.txt
 ├── .env.example        # Environment template
@@ -133,12 +143,14 @@ Then run `python setup.py` to update.
 
 ### Environment Variables
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `API_KEY` | Tavus API key | Yes |
-| `BROADGATE_PERSONA_ID` | Generated persona ID | Yes |
-| `WEBHOOK_URL` | Webhook endpoint URL | No |
-| `REPLICA_ID` | Default replica ID | No |
+| Variable | Description | Required | Default |
+|----------|-------------|----------|---------|
+| `API_KEY` | Tavus API key | Yes | - |
+| `BROADGATE_PERSONA_ID` | Generated persona ID | Yes | - |
+| `REPLICA_ID` | Default replica ID | No | `rfe12d8b9597` |
+| `TTS_ENGINE` | Text-to-Speech Engine | No | `elevenlabs` |
+| `BRITISH_VOICE_ID` | Voice ID for ElevenLabs | No | `M336tBVZHWWiWb4R54ui` |
+| `WEBHOOK_URL` | Webhook endpoint URL | No | - |
 
 **Local Development:** Use `.env` file  
 **Streamlit Cloud:** Use Secrets (TOML format)

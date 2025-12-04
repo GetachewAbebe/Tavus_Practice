@@ -5,18 +5,19 @@ Main landing page with live demo
 
 import os
 import streamlit as st
+
+# Page configuration
+st.set_page_config(
+    page_title="Broadgate",
+    page_icon="🎙️",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
 from config import BRAND_NAME, PAGE_ICON, BROADGATE_PERSONA_ID, WEBHOOK_URL
 from components import apply_custom_css, render_sidebar, show_conversation_modal, show_error_message, show_success_message
 from utils import create_conversation, end_conversation, init_db
 from utils.pdf_processor import extract_text_from_pdf, find_pdf_in_dir
-
-# Page configuration
-st.set_page_config(
-    page_title=f"{BRAND_NAME}",
-    page_icon=PAGE_ICON,
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
 
 # Apply styling and sidebar
 apply_custom_css()

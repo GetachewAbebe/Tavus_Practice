@@ -8,18 +8,9 @@ from dotenv import load_dotenv
 # Load environment variables from .env file (for local development)
 load_dotenv()
 
-# Helper function to get config values from Streamlit secrets or environment variables
+# Helper function to get config values from environment variables
 def get_config(key: str, default=None):
-    """Get configuration value from Streamlit secrets or environment variables"""
-    try:
-        import streamlit as st
-        # Try Streamlit secrets first (for cloud deployment)
-        if hasattr(st, 'secrets') and key in st.secrets:
-            return st.secrets[key]
-    except (ImportError, FileNotFoundError, KeyError):
-        pass
-    
-    # Fall back to environment variables (for local development)
+    """Get configuration value from environment variables (.env file)"""
     return os.getenv(key, default)
 
 # Brand Configuration

@@ -55,6 +55,35 @@
 
 To deploy to Streamlit Cloud, you need to configure secrets instead of using a `.env` file:
 
+1. Push your code to GitHub
+2. Create a new app on [Streamlit Cloud](https://share.streamlit.io)
+3. Set **Main file path** to: `app.py`
+4. In your app's **Settings > Secrets**, add:
+
+```toml
+# Tavus API Key
+API_KEY = "your_tavus_api_key_here"
+
+# Broadgate Persona ID
+BROADGATE_PERSONA_ID = "your_persona_id_here"
+
+# Replica ID
+REPLICA_ID = "your_replica_id_here"
+
+# Voice Configuration
+TTS_ENGINE = "elevenlabs"
+BRITISH_VOICE_ID = "your_voice_id_here"
+
+# Webhook URL (Optional)
+WEBHOOK_URL = "https://your-webhook-endpoint.com/webhook"
+```
+
+5. Save and your app will automatically reboot
+
+**📖 See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.**
+
+## 📁 Project Structure
+
 ```
 Tavus_Practice/
 ├── components/          # UI components
@@ -107,6 +136,34 @@ Edit `setup.py` to customize:
 - **PERSONA_NAME**: Your persona's name
 - **PERSONA_SYSTEM_PROMPT**: Behavior and personality
 - **KNOWLEDGE_BASE_URL**: Your knowledge base document
+
+Then run `python setup.py` to update.
+
+## 🔧 Configuration
+
+### Environment Variables
+
+| Variable | Description | Required | Default |
+|----------|-------------|----------|---------|
+| `API_KEY` | Tavus API key | Yes | - |
+| `BROADGATE_PERSONA_ID` | Generated persona ID | Yes | - |
+| `REPLICA_ID` | Default replica ID | No | `your_replica_id` |
+| `TTS_ENGINE` | Text-to-Speech Engine | No | `elevenlabs` |
+| `BRITISH_VOICE_ID` | Voice ID for ElevenLabs | No | `your_voice_id` |
+| `WEBHOOK_URL` | Webhook endpoint URL | No | - |
+
+**Local Development:** Use `.env` file  
+**Streamlit Cloud:** Use Secrets (TOML format)
+
+The app automatically detects which environment it's running in.
+
+### Database
+
+Conversations and leads are stored in `broadgate_leads.db` (SQLite).
+
+## 🔗 Webhooks
+
+Configure webhooks to receive real-time notifications:
 
 **Payload Format:**
 ```json

@@ -16,7 +16,7 @@ st.set_page_config(
 
 from config import BRAND_NAME, PAGE_ICON, BROADGATE_PERSONA_ID, WEBHOOK_URL
 from components import apply_custom_css, render_sidebar, show_conversation_modal, show_error_message, show_success_message
-from utils import create_conversation, end_conversation, init_db
+from utils import create_conversation, end_conversation, init_db, scrape_website
 from utils.pdf_processor import extract_text_from_pdf, find_pdf_in_dir
 
 # Apply styling and sidebar
@@ -93,22 +93,35 @@ with col_demo1:
                     st.session_state.conversation_id = None
                     
                     with st.spinner("Getting ready..."):
-                        # Check for PDF knowledge base
+                        # Try to load knowledge base from website first
                         context_text = None
-                        # Try specific path first, then root
-                        pdf_path = None
-                        specific_path = os.path.join("Konwledge_Base", "Broadgate.pdf")
-                        if os.path.exists(specific_path):
-                            pdf_path = specific_path
-                        else:
-                            pdf_path = find_pdf_in_dir(".")
-                            
-                        if pdf_path:
-                            try:
-                                context_text = extract_text_from_pdf(pdf_path)
-                                st.toast(f"Loaded knowledge base from {os.path.basename(pdf_path)}", icon="📚")
-                            except Exception as e:
-                                st.warning(f"Could not load PDF: {e}")
+                        knowledge_source = None
+                        
+                        # Primary: Try website scraping
+                        try:
+                            context_text = scrape_website("https://broadgatevoice.co.uk/")
+                            if context_text and len(context_text) > 100:
+                                knowledge_source = "website"
+                                st.toast("Loaded knowledge base from Broadgate website", icon="🌐")
+                        except Exception as e:
+                            st.warning(f"Could not load website: {e}")
+                        
+                        # Fallback: Try PDF if website failed
+                        if not context_text:
+                            pdf_path = None
+                            specific_path = os.path.join("Konwledge_Base", "Broadgate.pdf")
+                            if os.path.exists(specific_path):
+                                pdf_path = specific_path
+                            else:
+                                pdf_path = find_pdf_in_dir(".")
+                                
+                            if pdf_path:
+                                try:
+                                    context_text = extract_text_from_pdf(pdf_path)
+                                    knowledge_source = "PDF"
+                                    st.toast(f"Loaded knowledge base from {os.path.basename(pdf_path)}", icon="📚")
+                                except Exception as e:
+                                    st.warning(f"Could not load PDF: {e}")
 
                         result = create_conversation(
                             persona_id=custom_persona or BROADGATE_PERSONA_ID,

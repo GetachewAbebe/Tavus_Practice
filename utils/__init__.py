@@ -31,6 +31,11 @@ from .extraction import (
     extract_info_and_send_webhook
 )
 
+from .web_scraper import (
+    scrape_website,
+    scrape_multiple_pages
+)
+
 __all__ = [
     # API functions
     'find_document_by_name',
@@ -54,5 +59,9 @@ __all__ = [
     'extract_transcript_text',
     'extract_name',
     'extract_email',
-    'extract_info_and_send_webhook'
+    'extract_info_and_send_webhook',
+    
+    # Web scraper functions
+    'scrape_website',
+    'scrape_multiple_pages'
 ]

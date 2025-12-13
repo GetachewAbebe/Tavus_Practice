@@ -9,6 +9,15 @@ import streamlit as st
 def show_conversation_modal(conversation_url: str):
     """Display a modal with the conversation iframe"""
     if conversation_url:
+        # Append parameters to hide local video and maximize AI
+        # activeSpeakerMode=true: Focus on the speaker (usually AI)
+        # showLocalVideo=0: Try to hide the user's self-view (best effort)
+        # showParticipantsBar=0: Hide the sidebar
+        # startVideoOff=1: Start with camera off
+        # showUserName=0: Hide name tags
+        separator = "&" if "?" in conversation_url else "?"
+        final_url = f"{conversation_url}{separator}activeSpeakerMode=true&showLocalVideo=0&showParticipantsBar=0&startVideoOff=1&showUserName=0&showSelfView=0&showUserNames=0&showName=0&videoSource=false"
+
         st.markdown(f"""
         <div style="
             background: #1E293B;
@@ -19,7 +28,7 @@ def show_conversation_modal(conversation_url: str):
         ">
             <h3 style="color: #F8FAFC; margin-bottom: 1rem;">🎙️ Live Conversation</h3>
             <iframe 
-                src="{conversation_url}" 
+                src="{final_url}" 
                 style="
                     width: 100%;
                     height: 600px;
